@@ -1,0 +1,58 @@
+Create a form which takes the name of the user as input and prints a greeting in the format
+given below and if the user submits the form with the name field blank, it prints an
+appropriate error message.
+Hello, Welcome to Everyone!
+Have a nice day!!
+<?php
+$name = "";
+$error = "";
+$greeting = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+ if (empty($_POST["username"])) {
+ $error = "Error: Please enter your name.";
+ } else {
+ $name = htmlspecialchars($_POST["username"]);
+ $greeting = "Hello $name, Welcome to Everyone!<br>Have a nice day!!";
+ }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Greeting Form</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ padding: 30px;
+ background-color: #f0f0f0;
+ }
+ form {
+ background-color: #fff;
+ padding: 20px;
+ max-width: 400px;
+ border-radius: 8px;
+ box-shadow: 0 0 5px rgba(0,0,0,0.2);
+ }
+ .error { color: red; }
+ .greeting { color: green; margin-top: 20px; }
+ </style>
+</head>
+<body>
+<h2>User Greeting Form</h2>
+<form method="post">
+ Enter your name: <input type="text" name="username" value="<?php echo $name; ?>">
+ <input type="submit" value="Submi
+</form>
+<?php
+if ($error) {
+ echo "<p class='error'>$error</p>";
+}
+if ($greeting) {
+ echo "<p class='greeting'>$greeting</p>";
+}
+?>
+</body>
+</html>
+OUTPUT:
+Hello [Name], Welcome to Everyone!
+Have a nice day!
