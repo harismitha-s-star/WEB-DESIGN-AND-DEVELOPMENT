@@ -1,0 +1,12 @@
+Create a PHP program to compute the sum of the digits of a number.
+<?php
+$number = 12345;
+$numStr = strval($number);
+$sum = 0;
+for ($i = 0; $i < strlen($numStr); $i++) {
+$sum += intval($numStr[$i]);
+}
+echo "The sum of the digits of $number is: $sum";
+?>
+OUTPUT:
+The sum of the digits of 12345 is: 15
