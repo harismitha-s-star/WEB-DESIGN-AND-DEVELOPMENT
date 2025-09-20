@@ -1,0 +1,27 @@
+IsSet() function in PHP with example.
+Syntax:
+bool isset(mixed $var [, mixed $... ])
+EXAMPLE:
+<?php
+$name = "Alice";
+$age = null;
+if (isset($name)) {
+echo "Variable 'name' is set.<br>";
+} else {
+echo "Variable 'name' is not set.<br>";
+}
+if (isset($age)) {
+echo "Variable 'age' is set.<br>";
+} else {
+echo "Variable 'age' is not set.<br>";
+}
+if (isset($address)) {
+echo "Variable 'address' is set.<br>";
+} else {
+echo "Variable 'address' is not set.<br>";
+}
+?>
+OUTPUT:
+Variable 'name' is set.
+Variable 'age' is not set.
+Variable 'address' is not set.
