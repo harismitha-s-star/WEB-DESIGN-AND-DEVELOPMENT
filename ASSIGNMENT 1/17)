@@ -1,0 +1,42 @@
+Write a PHP function that takes two numbers as input and returns the sum of those
+numbers. Display the result on the webpage, when a button is clicked.
+<?php
+$num1 = $num2 = $sum = "";
+function addNumbers($a, $b) {
+return $a + $b;
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$num1 = isset($_POST["num1"]) ? $_POST["num1"] : 0;
+$num2 = isset($_POST["num2"]) ? $_POST["num2"] : 0;
+if (is_numeric($num1) && is_numeric($num2)) {
+$sum = addNumbers($num1, $num2);
+} else {
+$sum = "Please enter valid numbers.";
+}
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sum of Two Numbers</title>
+</head>
+<body>
+<h2>Calculate Sum</h2>
+<form method="post" action="">
+Number 1: <input type="text" name="num1" value="<?php echo htmlspecialchars($num1); ?>" required><br><br>
+Number 2: <input type="text" name="num2" value="<?php echo htmlspecialchars($num2); ?>" required><br><br>
+<input type="submit" value="Calculate Sum">
+</form>
+<?php
+if ($sum !== "") {
+echo "<h3>Result: $sum</h3>";
+}
+?>
+</body>
+</html>
+OUTPUT:
+Calculate Sum
+Number 1: abc
+Number 2: 30
+[ Calculate Sum ]
+Result: Please enter valid numbers.
