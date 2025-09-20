@@ -1,0 +1,30 @@
+Develop a program to check student grades based on marks using a loop.
+<?php
+$marks = [85, 72, 60, 48, 33, 95, 77, 55];
+foreach ($marks as $index => $mark) {
+$studentNo = $index + 1;
+if ($mark >= 80) {
+$grade = "A+";
+} elseif ($mark >= 70) {
+$grade = "A";
+} elseif ($mark >= 60) {
+$grade = "B";
+} elseif ($mark >= 50) {
+$grade = "C";
+} elseif ($mark >= 40) {
+$grade = "D";
+} else {
+$grade = "F";
+}
+echo "Student $studentNo: Marks = $mark, Grade = $grade\n";
+}
+?>
+OUTPUT:
+Student 1: Marks = 85, Grade = A+
+Student 2: Marks = 72, Grade = A
+Student 3: Marks = 60, Grade = B
+Student 4: Marks = 48, Grade = D
+Student 5: Marks = 33, Grade = F
+Student 6: Marks = 95, Grade = A+
+Student 7: Marks = 77, Grade = A
+Student 8: Marks = 55, Grade = C
