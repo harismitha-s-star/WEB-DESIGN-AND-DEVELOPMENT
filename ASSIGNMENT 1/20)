@@ -1,0 +1,37 @@
+Examine a PHP function that accepts an array of numbers and returns the highest and
+lowest values in that array. Display the results on the webpage.
+<?php
+// Function to return highest and lowest from an array
+function getMinMax($numbers) {
+if (empty($numbers)) {
+return ["min" => null, "max" => null];
+}
+$min = $numbers[0];
+$max = $numbers[0];
+foreach ($numbers as $num) {
+if ($num < $min) {
+$min = $num;
+}
+if ($num > $max) {
+$max = $num;
+}
+}
+return ["min" => $min, "max" => $max];
+}
+// Example array of numbers
+$numbers = [12, 5, 88, 34, 2, 99, 7];
+// Call the function
+$result = getMinMax($numbers);
+// Display results
+echo "<h3>Input Numbers:</h3>";
+echo implode(", ", $numbers);
+echo "<h3>Results:</h3>";
+echo "Lowest Number: " . $result['min'] . "<br>";
+echo "Highest Number: " . $result['max'];
+?>
+OUTPUT:
+Input Numbers:
+12, 5, 88, 34, 2, 99, 7
+Results:
+Lowest Number: 2
+Highest Number: 99
