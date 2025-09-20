@@ -1,0 +1,60 @@
+how a form with input fields for a user's name, email, and message. When the form is
+submitted, display a confirmation message on the same page with the user's name and
+email.
+<?php
+$name = $email = $message = "";
+$confirmation = "";
+$error = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (empty($_POST["name"]) || empty($_POST["email"])) {
+$error = "Name and Email are required!";
+} else {
+$name = htmlspecialchars($_POST["name"]);
+$email = htmlspecialchars($_POST["email"]);
+$message = htmlspecialchars($_POST["message"]);
+$confirmation = "Thank you, <strong>$name</strong>! We have received your message.<br>";
+$confirmation .= "A confirmation email will be sent to <strong>$email</strong>.";
+}
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Form</title>
+<style>
+body { font-family: Arial, sans-serif; padding: 30px; }
+form { max-width: 400px; background: #f9f9f9; padding: 20px; border-radius: 6px; }
+input, textarea { width: 100%; margin-bottom: 15px; padding: 8px; }
+.error { color: red; }
+.confirmation { background: #d4edda; padding: 15px; border: 1px solid #c3e6cb; margin-top: 20px; }
+</style>
+</head>
+<body>
+<h2>Contact Us</h2>
+<?php
+if ($error) {
+echo "<p class='error'>$error</p>";
+}
+if ($confirmation) {
+echo "<div class='confirmation'>$confirmation</div>";
+}
+?>
+<form method="post" action="">
+<label>Name:</label>
+<input type="text" name="name" value="<?php echo $name; ?>" required>
+<label>Email:</label>
+<input type="email" name="email" value="<?php echo $email; ?>" required>
+<label>Message:</label>
+<textarea name="message" rows="5"><?php echo $message; ?></textarea>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+OUTPUT:
+Thank you, Alice! We have received your message.
+A confirmation email will be sent to alice@example.com.
+Name: Alice
+Email: alice@example.com
+Message:
+[ ]
+[ Submit ]
