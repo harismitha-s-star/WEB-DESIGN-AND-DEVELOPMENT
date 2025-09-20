@@ -1,0 +1,71 @@
+Implement a contact form with validation to ensure all fields are filled out before
+submission.
+<?php
+$name = $email = $message = "";
+$nameErr = $emailErr = $messageErr = "";
+$successMessage = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$isValid = true;
+// Validate Name
+if (empty($_POST["name"])) {
+$nameErr = "Name is required";
+$isValid = false;
+} else {
+$name = htmlspecialchars($_POST["name"]);
+}
+// Validate Email
+if (empty($_POST["email"])) {
+$emailErr = "Email is required";
+$isValid = false;
+} else {
+$email = htmlspecialchars($_POST["email"]);
+}
+// Validate Message
+if (empty($_POST["message"])) {
+$messageErr = "Message is required";
+$isValid = false;
+} else {
+$message = htmlspecialchars($_POST["message"]);
+}
+// If all fields are valid
+if ($isValid) {
+$successMessage = "Thank you, <strong>$name</strong>! Your message has been received.";
+// Here you could also add code to send an email or store in a database
+}
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Form</title>
+<style>
+body { font-family: Arial; padding: 30px; background: #f4f4f4; }
+form { background: white; padding: 20px; border-radius: 6px; max-width: 400px; }
+input, textarea { width: 100%; padding: 8px; margin-bottom: 10px; }
+.error { color: red; font-size: 14px; }
+.success { background: #d4edda; padding: 15px; border: 1px solid #c3e6cb; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+<h2>Contact Us</h2>
+<?php
+if ($successMessage) {
+echo "<div class='success'>$successMessage</div>";
+}
+?>
+<form method="post" action="">
+<label>Name:</label>
+<input type="text" name="name" value="<?php echo $name; ?>">
+<span class="error"><?php echo $nameErr; ?></span><br>
+<label>Email:</label>
+<input type="text" name="email" value="<?php echo $email; ?>">
+<span class="error"><?php echo $emailErr; ?></span><br>
+<label>Message:</label>
+<textarea name="message"><?php echo $message; ?></textarea>
+<span class="error"><?php echo $messageErr; ?></span><br>
+<input type="submit" value="Submit">
+</form>
+</body>
+</html>
+OUTPUT:
+Thank you, John! Your message has been received
