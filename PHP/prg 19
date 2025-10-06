@@ -1,0 +1,31 @@
+Examine a PHP function that accepts an array of numbers and returns the highest and
+lowest values in that array. Display the results on the webpage.
+
+ANSWER;
+a simple PHP program that takes an array of numbers, finds the highest and lowest values using a function, and displays them on a webpage.
+
+CODE:
+<?php
+// Function to get highest and lowest values
+function getHighLow($numbers) {
+    $highest = max($numbers); // built-in PHP function
+    $lowest = min($numbers);  // built-in PHP function
+    return array("highest" => $highest, "lowest" => $lowest);
+}
+
+// Example array
+$numbersArray = array(45, 12, 78, 23, 56, 89, 34);
+
+// Call the function
+$result = getHighLow($numbersArray);
+
+// Display the array
+echo "Numbers in the array: " . implode(", ", $numbersArray);
+echo "Highest Value: " . $result['highest'];
+echo "Lowest Value: " . $result['lowest'];
+?>
+
+OUTPUT:
+Numbers in the array: 45, 12, 78, 23, 56, 89, 34
+Highest Value: 89
+Lowest Value: 12
