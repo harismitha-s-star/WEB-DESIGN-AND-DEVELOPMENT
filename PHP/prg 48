@@ -1,0 +1,27 @@
+Record number handling in PHP with suitable examples.
+
+ANSWER:
+In practice, “record number handling” usually means working with arrays (or database records) by referring to their index (position). 
+This is common when fetching rows from a database or iterating through arrays.
+
+CODE:
+<?php
+// Example: student marks (each element = one record)
+$marks = array(85, 92, 78, 90, 88);
+
+// Access record number 2 (3rd element)
+echo "Record 3 (index 2): " . $marks[2] . "<br>";
+
+// Loop through all records with record numbers
+foreach ($marks as $recordNo => $value) {
+    echo "Record " . ($recordNo + 1) . ": $value <br>";
+}
+?>
+
+OUTPUT:
+Record 3 (index 2): 78
+Record 1: 85 
+Record 2: 92 
+Record 3: 78 
+Record 4: 90 
+Record 5: 88 
