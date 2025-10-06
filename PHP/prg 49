@@ -1,0 +1,38 @@
+A sports team wants to evaluate player performance based on various statistical metrics. Design a system
+that utilizes numerical types and mathematical operators to calculate performance indices, averages, and
+rankings. How would you handle large datasets and perform complex calculations efficiently?
+
+Requirements
+1. Input: Player stats (points, assists, rebounds, etc.).
+
+2. Calculate:
+Performance Index (weighted score of different metrics).
+Averages across games.
+Rankings among players.
+Handle large datasets efficiently.
+
+SYSTEM:
+1. Data Storage
+Use a multidimensional array (or database for large datasets)
+
+2. Performance Index Calculation
+We can use numerical types & operators
+
+3. Averages
+If we store multiple game stats, we can use array_sum() and count()
+
+4. Ranking Players
+Sort players by performance index using arsort()
+
+5. Handling Large Datasets Efficiently
+Use Databases (MySQL/PostgreSQL) → store millions of player records instead of keeping them in memory.
+Indexes & Queries → aggregate stats with SQL (AVG, SUM, RANK()).
+Batch Processing → process records in chunks instead of all at once.
+PHP Array Functions (array_map, array_reduce) → efficient bulk calculations.
+Math Libraries (e.g., GMP, BCMath) → handle very large numbers with precision.
+
+SUMMARY:
+Numerical types + operators → used for averages, weighted indices, and ranking calculations.
+Arrays → store and manipulate player stats.
+Array functions (sum, sort, reduce) → fast calculations.
+For large datasets → offload storage/aggregation to databases + use PHP’s high-performance math functions.
