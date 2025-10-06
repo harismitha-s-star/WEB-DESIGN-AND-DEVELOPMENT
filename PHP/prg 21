@@ -1,0 +1,32 @@
+Construct a PHP function that checks if a given year is a leap year and returns true or
+false accordingly.
+
+CODE:
+<?php
+function isLeapYear($year) {
+    // Leap year rules:
+    // 1. Year divisible by 4 is a leap year
+    // 2. But years divisible by 100 are NOT leap years
+    // 3. Unless they are also divisible by 400
+    if (($year % 4 == 0 && $year % 100 != 0) || ($year % 400 == 0)) {
+        return true;
+    }
+    return false;
+}
+
+// Example usage
+$year = 2024;
+if (isLeapYear($year)) {
+    echo "$year is a Leap Year";
+} else {
+    echo "$year is NOT a Leap Year";
+}
+?>
+
+OUTPUT:
+2024 is a Leap Year
+
+HOW IT WORKS:
+Divisible by 4 → candidate for leap year.
+Divisible by 100 → normally not a leap year.
+Divisible by 400 → still a leap year (century exception).
