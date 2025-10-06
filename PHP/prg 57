@@ -1,0 +1,38 @@
+Outline the Regular Expression with appropriate examples.
+
+SOLUTION:
+Regular Expressions in PHP:
+A Regular Expression (Regex) is a pattern used to match, search, and manipulate strings.
+In PHP, regex is handled with preg_ functions (like preg_match, preg_replace, etc.).
+
+Common Regex Syntax:
+/pattern/ → regex is usually written between slashes.
+^ → start of string
+$ → end of string
+. → any character except newline
+* → zero or more occurrences
++ → one or more occurrences
+? → zero or one occurrence
+[] → character class (set of characters)
+{n,m} → repeat n to m times\d → digit (0-9)
+\w → word character (a-z, A-Z, 0-9, _)
+\s → whitespace
+
+PHP Functions with Regex:
+preg_match($pattern, $string) → Finds if pattern exists.
+preg_match_all($pattern, $string) → Finds all matches.
+preg_replace($pattern, $replacement, $string) → Replace pattern.
+preg_split($pattern, $string) → Split string by pattern.
+
+CODE:
+<?php
+$email = "test@example.com";
+if (preg_match("/^[\w\.-]+@[\w\.-]+\.\w{2,}$/", $email)) {
+    echo "Valid Email";
+} else {
+    echo "Invalid Email";
+}
+?>
+
+OUTPUT:
+Valid Email
