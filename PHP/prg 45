@@ -1,0 +1,46 @@
+Write a PHP function to compare two multidimensional arrays and return the difference.
+
+CODE:
+<?php
+// Function to compare multidimensional arrays
+function array_diff_recursive($array1, $array2) {
+    $result = array();
+
+    foreach ($array1 as $key => $value) {
+        // If key not exists in second array
+        if (!array_key_exists($key, $array2)) {
+            $result[$key] = $value;
+        } 
+        // If value is array → check recursively
+        elseif (is_array($value) && is_array($array2[$key])) {
+            $diff = array_diff_recursive($value, $array2[$key]);
+            if (!empty($diff)) {
+                $result[$key] = $diff;
+            }
+        } 
+        // If values differ
+        elseif ($value !== $array2[$key]) {
+            $result[$key] = $value;
+        }
+    }
+
+    return $result;
+}
+
+// Example arrays
+$array1 = array(
+    "student1" => array("name" => "Alice", "marks" => 90),
+    "student2" => array("name" => "Bob", "marks" => 75)
+);
+
+$array2 = array(
+    "student1" => array("name" => "Alice", "marks" => 85),
+    "student2" => array("name" => "Bob", "marks" => 75)
+);
+
+// Compare arrays
+print_r(array_diff_recursive($array1, $array2));
+?>
+
+OUTPUT:
+Array([student1] => Array([marks] => 90))
