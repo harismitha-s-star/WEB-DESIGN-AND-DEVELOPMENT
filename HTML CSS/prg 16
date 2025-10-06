@@ -1,0 +1,64 @@
+Write a PHP function that takes two numbers as input and returns the sum of those
+numbers. Display the result on the webpage, when a button is clicked.
+
+CODE:
+<?php
+// sum.php
+
+$sum = null;
+$error = '';
+$num1 = '';
+$num2 = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get values from POST and trim whitespace
+    $num1 = trim($_POST['num1'] ?? '');
+    $num2 = trim($_POST['num2'] ?? '');
+
+    // Validate inputs
+    if ($num1 === '' || $num2 === '') {
+        $error = 'Please enter both numbers.';
+    } elseif (!is_numeric($num1) || !is_numeric($num2)) {
+        $error = 'Please enter valid numeric values.';
+    } else {
+        // Cast to float for proper numeric addition (use (int) if you want integers)
+        $sum = (float)$num1 + (float)$num2;
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Sum Two Numbers (PHP)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 420px; margin: 0 auto; }
+        label { display: block; margin-top: 12px; }
+        input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { margin-top: 12px; padding: 8px 14px; cursor: pointer; }
+        .result { margin-top: 16px; font-weight: bold; }
+        .error { margin-top: 16px; color: #a00; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Sum Two Numbers</h2>
+    <form method="post" action="">
+        <label for="num1">Number 1</label>
+        <input id="num1" name="num1" type="text" value="<?php echo htmlspecialchars($num1); ?>" />
+
+        <label for="num2">Number 2</label>
+        <input id="num2" name="num2" type="text" value="<?php echo htmlspecialchars($num2); ?>" />
+
+        <button type="submit">Calculate Sum</button>
+    </form>
+
+    <?php if ($error): ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+    <?php elseif ($sum !== null): ?>
+        <div class="result">Result: <?php echo htmlspecialchars($sum); ?></div>
+    <?php endif; ?>
+</div>
+</body>
+</html>
