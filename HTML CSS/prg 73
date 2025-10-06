@@ -1,0 +1,42 @@
+Develop a PHP program to display an error message when a file other than jpg or png is uploaded.
+
+CODE:
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Check if a file is uploaded
+    if (isset($_FILES['file']) && $_FILES['file']['error'] == 0) {
+        
+        // Get file extension
+        $fileName = $_FILES['file']['name'];
+        $fileTmp = $_FILES['file']['tmp_name'];
+        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        
+        // Allowed file types
+        $allowed = ['jpg', 'jpeg', 'png'];
+        
+        if (in_array($fileExt, $allowed)) {
+            echo "<p style='color:green;'>File uploaded successfully: $fileName</p>";
+            // Move uploaded file to desired location (example: 'uploads/' folder)
+            // move_uploaded_file($fileTmp, "uploads/" . $fileName);
+        } else {
+            echo "<p style='color:red;'>Error: Only JPG and PNG files are allowed!</p>";
+        }
+    } else {
+        echo "<p style='color:red;'>Please select a file to upload.</p>";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+</head>
+<body>
+    <h2>Upload JPG or PNG File</h2>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
