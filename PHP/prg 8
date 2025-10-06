@@ -1,0 +1,41 @@
+A customer visits a shop to buy a soft drink; he has two options:
+Drink A cost is Rs.25 and the size of the bottle is 11.
+Drink B cost is Rs.23 and its size of the bottle is 9.
+Which drink should he choose to save money? Solve this problem using function deal ( ).
+
+ANSWER:
+<?php
+function deal() {
+    // Define costs and sizes
+    $costA = 25;
+    $sizeA = 11;
+
+    $costB = 23;
+    $sizeB = 9;
+
+    // Calculate cost per unit
+    $valueA = $costA / $sizeA;
+    $valueB = $costB / $sizeB;
+
+    // Display cost per unit
+    echo "Drink A: Rs.$costA for size $sizeA → Cost per unit: " . number_format($valueA, 2) . "<br>";
+    echo "Drink B: Rs.$costB for size $sizeB → Cost per unit: " . number_format($valueB, 2) . "<br>";
+
+    // Compare and decide
+    if ($valueA < $valueB) {
+        echo "Drink A is the better deal and saves money.";
+    } elseif ($valueB < $valueA) {
+        echo "Drink B is the better deal and saves money.";
+    } else {
+        echo "Both drinks offer the same value.";
+    }
+}
+
+// Call the function
+deal();
+?>
+
+OUTPUT:
+Drink A: Rs.25 for size 11 → Cost per unit: 2.27
+Drink B: Rs.23 for size 9 → Cost per unit: 2.56
+Drink A is the better deal and saves money.v
