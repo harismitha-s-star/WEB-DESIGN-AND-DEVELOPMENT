@@ -1,0 +1,23 @@
+Implement a PHP program that creates sessions, sets values in sessions, and removes data from
+the sessions.
+
+SOLUTION:
+A PHP program that demonstrates:
+Creating sessions
+Storing values in sessions
+Removing session data
+
+CODE:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PHP Session Example</title>
+</head>
+<body>
+    <h2>Session Handling in PHP</h2>
+    <a href="?set=true">Set Session Variables</a><br>
+    <a href="?show=true">Show Session Variables</a><br>
+    <a href="?remove=true">Remove 'role' Variable</a><br>
+    <a href="?destroy=true">Destroy Session</a><br>
+</body>
+</html>
