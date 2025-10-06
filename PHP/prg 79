@@ -1,0 +1,41 @@
+Create a PHP program to append two files in another file.
+
+SOLUTION:
+How It Works:
+file_get_contents() → Reads content of file1.txt and file2.txt.
+fopen($destination, "a") → Opens/creates merged.txt in append mode.
+fwrite() → Writes contents of both files into the destination.
+fclose() → Closes the file safely.
+
+CODE:
+<?php
+// Define file names
+$file1 = "file1.txt";
+$file2 = "file2.txt";
+$destination = "merged.txt";
+
+// Check if first file exists
+if (!file_exists($file1) || !file_exists($file2)) {
+    die("One or both source files do not exist.");
+}
+
+// Open destination file in append mode (create if not exists)
+$destHandle = fopen($destination, "a");
+
+if ($destHandle === false) {
+    die("Unable to open destination file.");
+}
+
+// Read contents of first file and append
+$content1 = file_get_contents($file1);
+fwrite($destHandle, $content1 . PHP_EOL);
+
+// Read contents of second file and append
+$content2 = file_get_contents($file2);
+fwrite($destHandle, $content2 . PHP_EOL);
+
+// Close destination file
+fclose($destHandle);
+
+echo "Files '$file1' and '$file2' have been appended into '$destination'.";
+?>
