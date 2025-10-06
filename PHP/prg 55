@@ -1,0 +1,37 @@
+Develop a PHP script that uses stack functions to reverse a string.
+
+SOLUTION:
+A stack works on the LIFO (Last In, First Out) principle, so we can use it to reverse a string. 
+In PHP, we’ll use:
+array_push() → push characters onto the stack
+array_pop() → pop characters off the stack (reverses order)
+
+CODE:
+<?php
+// Input string
+$str = "HELLO";
+
+// Convert string into array of characters
+$chars = str_split($str);
+
+// Initialize stack
+$stack = array();
+
+// Push all characters onto the stack
+foreach ($chars as $ch) {
+    array_push($stack, $ch);
+}
+
+// Pop characters from stack to build reversed string
+$reversed = "";
+while (!empty($stack)) {
+    $reversed .= array_pop($stack);
+}
+
+// Output
+echo "Original String: $str <br>";
+echo "Reversed String: $reversed";
+?>
+
+OUTPUT:
+Original String: HELLO <br>Reversed String: OLLEH
