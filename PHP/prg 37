@@ -1,0 +1,41 @@
+Explain Push and Pop in array functions.
+
+SOLUTION 
+1. array_push()
+Adds one or more elements to the end of an array.
+Returns the new number of elements in the array.
+EXAMPLE:
+<?php
+$fruits = array("Apple", "Banana");
+// Push elements
+array_push($fruits, "Mango", "Orange");
+print_r($fruits);
+?>
+
+OUTPUT:
+Array
+(
+    [0] => Apple
+    [1] => Banana
+    [2] => Mango
+    [3] => Orange
+)
+
+2. array_pop()
+Removes the last element from an array.
+Returns the removed element.
+Example:
+<?php
+$fruits = array("Apple", "Banana", "Mango");
+// Pop last element
+$removed = array_pop($fruits);
+echo "Removed: $removed <br>";
+print_r($fruits);
+?>
+
+OUTPUT:
+Removed: Mango <br>Array
+(
+    [0] => Apple
+    [1] => Banana
+)
