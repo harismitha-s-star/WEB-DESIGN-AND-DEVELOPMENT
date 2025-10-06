@@ -1,0 +1,42 @@
+Implement the setcookie( ) function with various arguments using the PHP program.
+
+SOLUTION:
+a PHP program that demonstrates how the setcookie() function works with its various arguments.
+The function syntax is:
+setcookie(name, value, expire, path, domain, secure, httponly);
+
+CODE:
+<?php
+// 1. Basic cookie (name and value only)
+setcookie("cookie1", "SimpleCookie");
+
+// 2. Cookie with expiry time (valid for 1 hour)
+setcookie("cookie2", "ExpiresIn1Hour", time() + 3600);
+
+// 3. Cookie with path restriction (available only within /admin folder)
+setcookie("cookie3", "PathRestricted", time() + 3600, "/admin");
+
+// 4. Cookie with domain restriction (works only for example.com)
+setcookie("cookie4", "DomainRestricted", time() + 3600, "/", "example.com");
+
+// 5. Secure cookie (sent only over HTTPS)
+setcookie("cookie5", "SecureCookie", time() + 3600, "/", "", true);
+
+// 6. HttpOnly cookie (not accessible via JavaScript, for security)
+setcookie("cookie6", "HttpOnlyCookie", time() + 3600, "/", "", false, true);
+
+// Display cookie values (on page reload)
+echo "<h2>Cookie Values:</h2>";
+foreach ($_COOKIE as $key => $value) {
+    echo "$key : $value <br>";
+}
+?>
+
+EXPLANATION:
+name → "cookie1" → Identifier of the cookie.
+value → "SimpleCookie" → Data stored in cookie.
+expire → time() + 3600 → Cookie lasts 1 hour.
+path → "/admin" → Cookie available only inside /admin folder.
+domain → "example.com" → Cookie only valid for that domain.
+secure → true → Sent only over HTTPS.
+httponly → true → Prevents JavaScript access (protection against XSS).
