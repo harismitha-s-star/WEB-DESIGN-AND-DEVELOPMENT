@@ -1,0 +1,27 @@
+Construct a PHP script that catches a division by zero error using try-catch.
+
+SOLUTION:
+In PHP, division by zero normally throws a warning. 
+But from PHP 7+, division by zero in integers throws a DivisionByZeroError, which can be caught using try-catch.
+
+CODE:
+<?php
+try {
+    $a = 10;
+    $b = 0;
+
+    if ($b == 0) {
+        throw new DivisionByZeroError("Division by zero is not allowed!");
+    }
+
+    $result = $a / $b;
+    echo "Result: $result";
+} 
+catch (DivisionByZeroError $e) {
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+OUTPUT:
+ERROR!
+Error: Division by zero is not allowed!
