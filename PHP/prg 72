@@ -1,0 +1,51 @@
+Write the PHP program to implement the following session functions.
+(i)session_register() (ii) session_unset() (iii) session_destroy()
+
+CODE:
+<?php
+// Start the session
+session_start();
+
+// (i) session_register() --> Deprecated
+// Instead, we directly assign values to $_SESSION
+$_SESSION["username"] = "JohnDoe";
+$_SESSION["email"] = "john@example.com";
+
+echo "<h3>Session Variables Registered</h3>";
+print_r($_SESSION);
+
+// (ii) session_unset() --> removes all session variables but keeps session active
+session_unset();
+
+echo "<h3>After session_unset()</h3>";
+print_r($_SESSION);
+
+// Re-register again for demo
+$_SESSION["username"] = "JohnDoe";
+$_SESSION["email"] = "john@example.com";
+
+// (iii) session_destroy() --> destroys the whole session
+session_destroy();
+
+echo "<h3>After session_destroy()</h3>";
+// Session variables won’t be accessible after destroy
+print_r($_SESSION);
+?>
+
+OUTPUT:
+Session Variables Registered
+Array
+(
+    [username] => JohnDoe
+    [email] => john@example.com
+)
+After session_unset()
+Array
+(
+)
+After session_destroy()
+Array
+(
+    [username] => JohnDoe
+    [email] => john@example.com
+)
