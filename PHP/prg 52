@@ -1,0 +1,26 @@
+Compare stack and queue operations using PHP with appropriate examples.
+
+SOLUTION:
+A stack is Last In First Out (LIFO),
+while a queue is First In First Out (FIFO).
+
+CODE:
+<?php
+// STACK (LIFO)
+$stack = array();
+array_push($stack, "A");
+array_push($stack, "B");
+array_push($stack, "C");
+echo "Stack Pop: " . array_pop($stack) . "<br>"; // Removes C
+
+// QUEUE (FIFO)
+$queue = array();
+array_push($queue, "X");
+array_push($queue, "Y");
+array_push($queue, "Z");
+echo "Queue Dequeue: " . array_shift($queue) . "<br>"; // Removes X
+?>
+
+OUTPUT:
+Stack Pop: C
+Queue Dequeue: X
