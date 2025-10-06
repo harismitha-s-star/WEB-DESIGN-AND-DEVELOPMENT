@@ -1,0 +1,111 @@
+plement a contact form with validation to ensure all fields are filled out before
+submission.
+
+CODE:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form with Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .contact-form {
+            background: #fff;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+        <form id="myForm">
+            <input type="text" id="name" placeholder="Your Name">
+            <span class="error" id="nameError"></span>
+
+            <input type="email" id="email" placeholder="Your Email">
+            <span class="error" id="emailError"></span>
+
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <span class="error" id="messageError"></span>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent form from submitting
+
+            // Clear previous errors
+            document.getElementById("nameError").innerHTML = "";
+            document.getElementById("emailError").innerHTML = "";
+            document.getElementById("messageError").innerHTML = "";
+
+            let isValid = true;
+
+            // Validate name
+            let name = document.getElementById("name").value.trim();
+            if (name === "") {
+                document.getElementById("nameError").innerHTML = "Name is required";
+                isValid = false;
+            }
+
+            // Validate email
+            let email = document.getElementById("email").value.trim();
+            if (email === "") {
+                document.getElementById("emailError").innerHTML = "Email is required";
+                isValid = false;
+            } else if (!/\S+@\S+\.\S+/.test(email)) {
+                document.getElementById("emailError").innerHTML = "Enter a valid email";
+                isValid = false;
+            }
+
+            // Validate message
+            let message = document.getElementById("message").value.trim();
+            if (message === "") {
+                document.getElementById("messageError").innerHTML = "Message is required";
+                isValid = false;
+            }
+
+            // If all valid
+            if (isValid) {
+                alert("Thank you! Your message has been sent successfully.");
+                document.getElementById("myForm").reset();
+            }
+        });
+    </script>
+
+</body>
+</html>
