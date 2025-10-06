@@ -1,0 +1,58 @@
+Develop a PHP script to accept email addresses and validate it. Display the domain name of the
+email and result of validation.
+
+SOLUTION:
+a PHP script that:
+Accepts an email address (via form).
+Validates the email format.
+Extracts and displays the domain name of the email.
+
+CODE:
+<?php
+$result = "";
+$domain = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+
+    // Validate email
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $result = "Valid Email Address ✅";
+        
+        // Extract domain name
+        $parts = explode("@", $email);
+        $domain = $parts[1];  // text after '@'
+    } else {
+        $result = "Invalid Email Address ❌";
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Validation</title>
+</head>
+<body>
+    <h2>Email Validation Form</h2>
+    <form method="post" action="">
+        <label>Enter Email:</label>
+        <input type="text" name="email" required>
+        <input type="submit" value="Validate">
+    </form>
+
+    <?php if (!empty($result)) { ?>
+        <h3>Result: <?php echo $result; ?></h3>
+        <?php if (!empty($domain)) { ?>
+            <p><b>Domain:</b> <?php echo $domain; ?></p>
+        <?php } ?>
+    <?php } ?>
+</body>
+</html>
+
+How It Works:
+User enters an email (e.g., user@example.com).
+filter_var($email, FILTER_VALIDATE_EMAIL) → Checks validity.
+explode("@", $email) → Splits into username and domain.
+For user@example.com → Domain = example.com.
+Displays validation result and domain name.
