@@ -1,0 +1,36 @@
+Outline the file reading and writing functions of PHP with suitable examples.
+
+SOLUTION:
+File Handling in PHP
+PHP provides built-in functions for reading and writing files.
+
+Most common functions are:
+1. fopen() + fread() + fclose()
+fopen("file.txt", "r") → opens file in read mode.
+fread($handle, filesize("file.txt")) → reads contents.
+fclose($handle) → closes the file.
+
+2. file_get_contents()
+Reads the entire file into a string.
+Easiest method for small/medium files.
+
+3. file()
+Reads file into an array (each line as an element).
+
+File Writing Functions:
+1. fopen() + fwrite() + fclose()
+Open file in write mode ("w" erases old data, "a" appends).
+
+2. file_put_contents()
+Writes data to file in one line.
+If file exists, it overwrites unless you use FILE_APPEND.
+
+Summary
+Function	             Purpose
+fopen()	               Open a file (read/write/append).
+fread()	               Read file content.
+fwrite()	             Write to a file.
+fclose()	             Close the file.
+file_get_contents()	   Read whole file into a string.
+file_put_contents()	   Write whole string into a file.
+file()	               Read file into array (line by line).
