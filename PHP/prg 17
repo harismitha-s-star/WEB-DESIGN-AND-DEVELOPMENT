@@ -1,0 +1,100 @@
+Examine the various control structures in php and construct a bank transaction problem
+with customers deposit and withdrawal of amount.
+
+ANSWER:
+Control Structures in PHP
+
+USE: 
+"Control structures decide what to execute and how often".
+
+TYPE - STRUCTURE - PURPOSE:
+Conditional Statements - if, else, elseif, switch -	Choose actions based on conditions
+Looping Statements - for, while, do...while, foreach - Repeat actions
+Branching Statements - break, continue, goto - Alter normal flow inside loops
+Special Forms - include, require (not strictly control, but affect flow) - Include other files
+
+CODE:
+if ($balance > 0) {
+    echo "You have money.";
+} elseif ($balance == 0) {
+    echo "Your balance is empty.";
+} else {
+    echo "You are in overdraft.";
+}
+
+switch ($transactionType) {
+    case 'deposit':
+        // code
+        break;
+    case 'withdraw':
+        // code
+        break;
+    default:
+        echo "Invalid transaction.";
+}
+
+BANK TRNSACTION PROBLEM:
+
+Customer can deposit or withdraw
+Validations for insufficient balance
+Uses if/else, switch, and loops to process multiple transactions.
+
+CODE:
+<?php
+// Simple Bank Transaction Simulation
+
+// Customer details
+$customerName = "John Doe";
+$balance = 1000; // Starting balance
+
+// List of transactions
+$transactions = [
+    ['type' => 'deposit', 'amount' => 500],
+    ['type' => 'withdraw', 'amount' => 200],
+    ['type' => 'withdraw', 'amount' => 1500], // should fail (insufficient funds)
+    ['type' => 'deposit', 'amount' => 100],
+];
+
+// Display initial details
+echo "Bank Transactions for $customerName\n";
+echo "Starting Balance: Rs.$balance\n\n";
+
+// Loop through each transaction
+foreach ($transactions as $txn) {
+    $type = strtolower($txn['type']); // normalize to lowercase
+    $amount = $txn['amount'];
+
+    switch ($type) {
+        case 'deposit':
+            $balance += $amount;
+            echo "Deposited Rs.$amount | New Balance: Rs.$balance\n";
+            break;
+
+        case 'withdraw':
+            if ($amount <= $balance) {
+                $balance -= $amount;
+                echo "Withdrew Rs.$amount | New Balance: Rs.$balance\n";
+            } else {
+                echo "Withdrawal of Rs.$amount FAILED — Insufficient Balance! Current Balance: Rs.$balance\n";
+            }
+            break;
+
+        default:
+            echo "Invalid transaction type: $type\n";
+    }
+}
+
+// Final balance
+echo "\nFinal Balance: Rs.$balance\n";
+?>
+
+OUTPUT:
+Bank Transactions for John Doe
+Starting Balance: Rs.1000
+
+Deposited Rs.500 | New Balance: Rs.1500
+Withdrew Rs.200 | New Balance: Rs.1300
+Withdrawal of Rs.1500 FAILED — Insufficient Balance! Current Balance: Rs.1300
+Deposited Rs.100 | New Balance: Rs.1400
+
+Final Balance: Rs.1400
