@@ -1,0 +1,29 @@
+Build a test cookie with the setcookie( ) function using PHP.
+
+SOLUTION:
+Explanation:
+setcookie(name, value, expire, path)
+name: Name of the cookie → "testCookie".
+value: Value stored → "HelloCookie".
+expire: Time when cookie expires → time() + 3600 (1 hour from now).
+path: / makes the cookie available across the whole website.
+On the first page load, PHP sends the cookie to the browser but it isn’t available until the next request.
+On refresh, the cookie will be available in the $_COOKIE array.
+
+CODE:
+<?php
+// Create a cookie named "testCookie" with value "HelloCookie"
+setcookie("testCookie", "HelloCookie", time() + 3600, "/"); 
+// expires in 1 hour, available across the entire domain
+
+// Check if cookie is set (on page reload)
+if (isset($_COOKIE['testCookie'])) {
+    echo "Cookie 'testCookie' is set!<br>";
+    echo "Value is: " . $_COOKIE['testCookie'];
+} else {
+    echo "Cookie 'testCookie' is not set yet. Refresh the page to see it.";
+}
+?>
+
+OUTPUT:
+Cookie 'testCookie' is not set yet. Refresh the page to see it.
