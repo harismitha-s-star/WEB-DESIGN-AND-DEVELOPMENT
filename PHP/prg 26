@@ -1,0 +1,30 @@
+Construct a php program to create a chess board in PHP using the “For” loop.
+
+CODE:
+<?php
+// Text version — paste into a compiler that prints plain output
+$size = 8;
+$useEmoji = true; // set to false if your output shows boxes or question marks
+
+for ($r = 0; $r < $size; $r++) {
+    for ($c = 0; $c < $size; $c++) {
+        $isWhite = (($r + $c) % 2 == 0);
+        if ($useEmoji) {
+            echo $isWhite ? "⬜ " : "⬛ ";
+        } else {
+            echo $isWhite ? "  " : "## ";
+        }
+    }
+    echo PHP_EOL;
+}
+?>
+
+OUTPUT:
+⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ 
+⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ 
+⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ 
+⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ 
+⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ 
+⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ 
+⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ 
+⬛ ⬜ ⬛ ⬜ ⬛ ⬜ ⬛ ⬜ 
