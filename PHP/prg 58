@@ -1,0 +1,27 @@
+Construct a PHP program to extract the mail addresses in the given
+string using regular expression.
+
+SOLUTION:
+PHP script that extracts all email addresses from a given string using a regular expression.
+
+CODE:
+<?php
+// Sample string with multiple email addresses
+$text = "Contact us at support@example.com, sales@example.org or admin@test.co.in.";
+
+// Regular expression for emails
+$pattern = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}/";
+
+// Extract all email addresses
+preg_match_all($pattern, $text, $matches);
+
+// Display results
+echo "<h3>Extracted Email Addresses:</h3>";
+foreach ($matches[0] as $email) {
+    echo $email . "<br>";
+}
+?>
+
+OUTPUT:
+Extracted Email Addresses: support@example.com
+sales@example.org<br>admin@test.co.in
