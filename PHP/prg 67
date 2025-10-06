@@ -1,0 +1,31 @@
+Construct a program that tokenizes a sentence into words using regular expressions. Then, count the
+number of occurrences of each word and display the results.
+
+SOLUTION:
+Tokenize a sentence into words & count occurrences
+We can use regular expressions (preg_split) to split a sentence into words, then count using array_count_values().
+
+CODE:
+<?php
+$sentence = "PHP is great, and PHP is powerful!";
+
+// Step 1: Tokenize into words (ignore punctuation, case-insensitive)
+$words = preg_split("/[^a-zA-Z]+/", strtolower($sentence), -1, PREG_SPLIT_NO_EMPTY);
+
+// Step 2: Count occurrences
+$wordCount = array_count_values($words);
+
+// Step 3: Display results
+echo "<h3>Word Frequency Count</h3>";
+foreach ($wordCount as $word => $count) {
+    echo "$word : $count <br>";
+}
+?>
+
+OUTPUT:
+Word Frequency Count
+php : 2
+is : 2 
+great : 1 
+and : 1 
+powerful : 1 
