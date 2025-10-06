@@ -1,0 +1,47 @@
+IsSet() function in PHP with example.
+
+ANSWER:
+The isset() function in PHP is used to check if a variable is set (declared) and is not NULL.
+SYNTAX:
+isset(variable, variable2, ...)
+    Returns true if the variable exists and is not NULL.
+    Returns false if the variable does not exist or is NULL.
+    Can check multiple variables at once — returns true only if all are set and not NULL.
+CODE:
+<?php
+// Show errors (helps debug on online compilers)
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Example variables
+$a = "Hello";
+$b = null;
+
+// undefined variable $d is not declared
+
+echo "isset(\$a): " . (isset($a) ? 'true' : 'false') . PHP_EOL;
+echo "isset(\$b): " . (isset($b) ? 'true' : 'false') . PHP_EOL;
+echo "isset(\$d) (undefined): " . (isset($d) ? 'true' : 'false') . PHP_EOL;
+
+// Multiple variables — true only if ALL are set and not NULL
+echo "isset(\$a, \$b): " . (isset($a, $b) ? 'true' : 'false') . PHP_EOL;
+
+// Arrays and keys
+$arr = [];
+echo "isset(\$arr['x']) before set: " . (isset($arr['x']) ? 'true' : 'false') . PHP_EOL;
+$arr['x'] = 10;
+echo "isset(\$arr['x']) after set: " . (isset($arr['x']) ? 'true' : 'false') . PHP_EOL;
+
+// Unset a variable
+unset($a);
+echo "After unset(\$a), isset(\$a): " . (isset($a) ? 'true' : 'false') . PHP_EOL;
+?>
+
+OUTPUT:
+isset($a): true
+isset($b): false
+isset($d) (undefined): false
+isset($a, $b): false
+isset($arr['x']) before set: false
+isset($arr['x']) after set: true
+After unset($a), isset($a): false
