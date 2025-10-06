@@ -1,0 +1,26 @@
+Differentiate between array_shift() and array_unshift() in PHP.
+
+Function	          Description	                                                    Example
+array_shift()	      Removes the first element from an array and returns it.         Reindexes array	$removed = array_shift($arr);
+array_unshift()	    Adds one or more elements to the beginning of an array	        array_unshift($arr, "new");
+  
+CODE:
+<?php
+$colors = array("red", "green", "blue");
+
+// Remove first element
+$removed = array_shift($colors);
+echo "Removed: $removed <br>";
+print_r($colors);
+
+// Add elements at the beginning
+array_unshift($colors, "yellow", "purple");
+echo "<br>After adding: ";
+print_r($colors);
+?>
+
+OUTPUT:
+Removed: red 
+Array ([0] => green [1] => blue)
+After adding: 
+Array([0] => yellow [1] => purple [2] => green [3] => blue)
