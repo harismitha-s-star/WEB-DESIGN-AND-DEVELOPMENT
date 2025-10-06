@@ -1,0 +1,28 @@
+Write a PHP script using an array that checks if a string contains another string and displays the result.
+
+CODE:
+<?php
+// Array of main strings
+$texts = array(
+    "PHP is a server-side scripting language.",
+    "I enjoy learning programming.",
+    "Regular expressions are powerful in PHP."
+);
+
+// Word to search
+$search = "PHP";
+
+// Loop through each string and check
+foreach ($texts as $sentence) {
+    if (strpos($sentence, $search) !== false) {
+        echo "The string contains '$search': $sentence <br>";
+    } else {
+        echo "The string does not contain '$search': $sentence <br>";
+    }
+}
+?>
+
+OUTPUT:
+The string contains 'PHP': PHP is a server-side scripting language.
+The string does not contain 'PHP': I enjoy learning programming. 
+The string contains 'PHP': Regular expressions are powerful in PHP.
