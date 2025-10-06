@@ -1,0 +1,54 @@
+QUESTION 
+Interpret the method to pass the information between pages in PHP with an example.
+
+ANSWER:
+
+1. Using GET Method (URL parameters)
+Used when: Data is not sensitive and you want to pass it visibly in the URL.
+EXAMPLE:
+<form action="welcome.php" method="get">
+  Name: <input type="text" name="username">
+  <input type="submit" value="Submit">
+</form>
+
+2. Using POST Method
+Used when: Data is sensitive (e.g., login), and should not be exposed in the URL.
+EXAMPLE:
+<form action="dashboard.php" method="post">
+  Username: <input type="text" name="username"><br>
+  Password: <input type="password" name="password">
+  <input type="submit" value="Login">
+</form>
+
+3. Using Sessions
+Used when: You need to store data across multiple pages (e.g., after login, user remains logged in).
+EXAMPLE:
+<?php
+session_start();
+$_SESSION['username'] = "JohnDoe";
+header("Location: dashboard.php");
+exit;
+?>
+
+4. Using Cookies
+Used when: You want to store small data on the user’s browser across sessions.
+EXAMPLE-1 :
+<?php
+setcookie("user", "JohnDoe", time() + (86400 * 30)); // 30 days
+echo "Cookie set!";
+?>
+EXAMPLE-2:
+<?php
+if (isset($_COOKIE['user'])) {
+    echo "Welcome back, " . $_COOKIE['user'];
+} else {
+    echo "No user cookie found.";
+}
+?>
+
+SUMMARY:
+In PHP, data can be passed between pages using GET, POST, SESSION, or COOKIE methods.
+GET appends data to the URL, suitable for non-sensitive information.
+POST sends data invisibly, commonly used for form submissions.
+SESSION stores user data on the server for use across multiple pages.
+COOKIE stores data in the user's browser, useful for remembering preferences.
