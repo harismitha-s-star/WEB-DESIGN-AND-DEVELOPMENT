@@ -1,0 +1,34 @@
+Classify the various network functions which provide network information or functions.
+
+SOLUTION:
+1. Addressing and Name Resolution Functions
+These functions provide information about device names, addresses, and their mappings.
+DNS (Domain Name System) – Resolves domain names into IP addresses.
+DHCP (Dynamic Host Configuration Protocol) – Assigns IP addresses and other network configuration automatically.
+ARP (Address Resolution Protocol) – Resolves IP addresses to MAC (hardware) addresses.
+RARP (Reverse ARP) – Resolves MAC addresses to IP addresses.
+
+2. Routing and Forwarding Functions
+These functions provide path selection and movement of data between networks.
+Routing Protocols – RIP, OSPF, EIGRP, BGP.
+ICMP (Internet Control Message Protocol) – Provides error reporting and network diagnostics (e.g., ping, traceroute).
+IGMP (Internet Group Management Protocol) – Provides information for managing multicast groups.
+
+3. Management and Monitoring Functions
+These functions provide information for controlling and supervising networks.
+SNMP (Simple Network Management Protocol) – Provides information about devices and their performance.
+Syslog – Provides logging and event reporting.
+NetFlow / sFlow – Provide traffic flow information for analysis.
+
+4. Security and Authentication Functions
+Provide security-related network information and control.
+AAA (Authentication, Authorization, Accounting) – Provides user access and tracking information.
+RADIUS / TACACS+ – Authentication and authorization services.
+Firewalls & IDS/IPS – Provide information about allowed/blocked traffic.
+
+Summary:
+Network functions that provide information or services can be classified into:
+Addressing & Name Resolution (DNS, DHCP, ARP)
+Routing & Forwarding (RIP, OSPF, ICMP)
+Management & Monitoring (SNMP, Syslog)
+Security & Authentication (AAA, RADIUS, TACACS+)
