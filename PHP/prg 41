@@ -1,0 +1,30 @@
+How can you use regular expressions to extract all email addresses from a given string using an array in
+PHP?
+
+CODE:
+<?php
+// Sample string containing email addresses
+$text = "You can contact us at admin@example.com, support@domain.org or sales@shop.net.";
+
+// Regular expression for email addresses
+$pattern = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}/";
+
+// Extract all matches into an array
+preg_match_all($pattern, $text, $matches);
+
+// $matches[0] contains all emails
+$emails = $matches[0];
+
+// Display result
+echo "Extracted Email Addresses:<br>";
+print_r($emails);
+?>
+
+OUTPUT:
+Extracted Email Addresses:
+Array
+(
+    [0] => admin@example.com
+    [1] => support@domain.org
+    [2] => sales@shop.net
+)
