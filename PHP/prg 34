@@ -1,0 +1,16 @@
+Replace all occurrences of a specific word with another word in a string using regular expressions in
+PHP.
+
+CODE:
+<?php
+// Original string
+$text = "PHP is powerful. I love PHP because PHP is flexible.";
+
+// Replace all occurrences of "PHP" with "Python"
+$result = preg_replace("/\bPHP\b/", "Python", $text);
+
+echo $result;
+?>
+
+OUTPUT:
+Python is powerful. I love Python because Python is flexible.
