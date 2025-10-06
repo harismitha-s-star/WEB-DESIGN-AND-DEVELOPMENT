@@ -1,0 +1,86 @@
+Write a PHP script to manipulate the strings with all the string functions.
+
+CODE:
+<?php
+// Sample string
+$text = "  Hello World! PHP is awesome. PHP is powerful.  ";
+$word = "PHP";
+
+echo "<h3>Original String:</h3>";
+echo "'" . $text . "'<br><br>";
+
+// 1. strlen() - String length
+echo "Length of string: " . strlen($text) . "<br>";
+
+// 2. str_word_count() - Count words
+echo "Word count: " . str_word_count($text) . "<br>";
+
+// 3. strpos() - Find position of first occurrence
+echo "First occurrence of '$word': " . strpos($text, $word) . "<br>";
+
+// 4. strrpos() - Find position of last occurrence
+echo "Last occurrence of '$word': " . strrpos($text, $word) . "<br>";
+
+// 5. substr() - Extract part of string
+echo "Substring (first 5 chars): " . substr($text, 0, 5) . "<br>";
+
+// 6. str_replace() - Replace all occurrences
+echo "Replace PHP with Java: " . str_replace("PHP", "Java", $text) . "<br>";
+
+// 7. strtolower() - Lowercase
+echo "Lowercase: " . strtolower($text) . "<br>";
+
+// 8. strtoupper() - Uppercase
+echo "Uppercase: " . strtoupper($text) . "<br>";
+
+// 9. ucfirst() - Uppercase first letter
+echo "Uppercase first letter: " . ucfirst(trim($text)) . "<br>";
+
+// 10. ucwords() - Uppercase first letter of each word
+echo "Uppercase each word: " . ucwords(trim($text)) . "<br>";
+
+// 11. trim() - Remove whitespace from both ends
+echo "Trimmed: '" . trim($text) . "'<br>";
+
+// 12. ltrim() - Remove whitespace from left
+echo "Left Trimmed: '" . ltrim($text) . "'<br>";
+
+// 13. rtrim() - Remove whitespace from right
+echo "Right Trimmed: '" . rtrim($text) . "'<br>";
+
+// 14. explode() - Split string into array
+$wordsArray = explode(" ", trim($text));
+echo "Exploded array: ";
+print_r($wordsArray);
+echo "<br>";
+
+// 15. implode() - Join array into string
+echo "Imploded back: " . implode("-", $wordsArray) . "<br>";
+
+// 16. strrev() - Reverse string
+echo "Reversed: " . strrev($text) . "<br>";
+
+// 17. similar_text() - Similarity percentage
+similar_text("PHP", "php", $percent);
+echo "Similarity between 'PHP' and 'php': $percent%<br>";
+
+// 18. strcmp() - Compare strings (case-sensitive)
+echo "strcmp('Hello', 'hello'): " . strcmp("Hello", "hello") . "<br>";
+
+// 19. strcasecmp() - Compare strings (case-insensitive)
+echo "strcasecmp('Hello', 'hello'): " . strcasecmp("Hello", "hello") . "<br>";
+
+// 20. number_format() - Format numbers inside strings
+$num = 1234567.891;
+echo "Formatted number: " . number_format($num, 2) . "<br>";
+?>
+
+OUTPUT:
+    [0] => Hello
+    [1] => World!
+    [2] => PHP
+    [3] => is
+    [4] => awesome.
+    [5] => PHP
+    [6] => is
+    [7] => powerful.
