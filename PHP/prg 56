@@ -1,0 +1,50 @@
+What are all the Functions available to sort a PHP array?
+
+SOLUTION:
+PHP provides a rich set of array sorting functions depending on whether you want to sort values, keys, or keep key–value associations.
+
+Sorting by Values (Indexed Arrays):
+sort($array) → Sorts values in ascending order, reindexes keys.
+rsort($array) → Sorts values in descending order, reindexes keys.
+asort($array) → Sorts values in ascending order, preserves keys.
+arsort($array) → Sorts values in descending order, preserves keys.
+
+Sorting by Keys (Associative Arrays):
+ksort($array) → Sorts array by keys in ascending order.
+krsort($array) → Sorts array by keys in descending order.
+
+Natural Order Sorting:
+natsort($array) → Natural order sorting (e.g., "image2" < "image10").
+natcasesort($array) → Natural order, case-insensitive.
+
+User-Defined Comparison Functions:
+usort($array, "callback") → Sorts by user-defined comparison of values.
+uasort($array, "callback") → Like usort() but preserves keys.
+uksort($array, "callback") → Sorts by keys using a user-defined function.
+
+Random & Shuffling:
+shuffle($array) → Randomly shuffles array values, reindexes keys.
+
+Multidimensional Array Sorting:
+array_multisort($array1, $array2, ...) → Sorts multiple arrays or multi-dimensional arrays at once.
+
+CODE:
+<?php
+$fruits = array("d" => "Banana", "a" => "Apple", "c" => "Mango", "b" => "Orange");
+
+// Sort by value ascending
+asort($fruits);
+print_r($fruits);
+
+echo "<br>";
+
+// Sort by keys descending
+krsort($fruits);
+print_r($fruits);
+?>
+
+OUTPUT:
+Array
+([a] => Apple [d] => Banana [c] => Mango [b] => Orange)
+Array
+([d] => Banana [c] => Mango [b] => Orange [a] => Apple)
