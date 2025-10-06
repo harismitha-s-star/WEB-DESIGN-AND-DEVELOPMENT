@@ -1,0 +1,47 @@
+29. Infer the usage of the following PHP functions:
+(i) rand() (ii) abs() (iii) strreplace() (iv) pi( ) (v) ceil()
+
+1. rand() – Generate a Random Number
+Usage: Returns a pseudo-random integer between two specified numbers (inclusive).
+Syntax:
+rand(min, max);
+EXAMPLE:
+<?php
+echo rand(1, 10); // Random number between 1 and 10
+?>
+
+2. abs() – Absolute Value
+Usage: Returns the absolute (positive) value of a number.
+Syntax:
+abs(number);
+EXAMPLE:
+<?php
+echo abs(-15.7); // Output: 15.7
+?>
+
+3. str_replace() – Replace Text in a String
+Usage: Replaces all occurrences of a search string with a replacement string.
+Syntax:
+str_replace(search, replace, subject);
+EXAMPLE:
+<?php
+echo str_replace("world", "PHP", "Hello world"); // Output: Hello PHP
+?>
+
+4. pi() – Mathematical Constant π
+Usage: Returns the value of π (3.1415926535898...).
+Syntax:
+pi();
+EXAMPLE:
+<?php
+echo pi(); // Output: 3.1415926535898
+?>
+
+5. ceil() – Round Up a Number
+Usage: Rounds a number up to the nearest integer.
+Syntax:
+ceil(number);
+EXAMPLE:
+<?php
+echo ceil(4.2); // Output: 5
+?>
