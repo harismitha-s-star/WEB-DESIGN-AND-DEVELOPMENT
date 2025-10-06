@@ -1,0 +1,35 @@
+Elucidate the steps to read and delete existing cookies in the browser.
+
+SOLUTION:
+Steps to Read Cookies:
+Cookies sent from the browser are available in the $_COOKIE superglobal array.
+Use the cookie name as the key to read its value.
+Always check with isset() to avoid undefined index errors.
+
+Steps to Delete Cookies:
+To delete a cookie, you can’t directly remove it from $_COOKIE.
+Instead, you reset it by setting the cookie again with:
+The same name
+Expiry time in the past (e.g., time() - 3600)
+This makes the browser remove it.
+
+CODE:
+<?php
+// ----------------- READ COOKIE -----------------
+if (isset($_COOKIE['user'])) {
+    echo "Welcome back, " . $_COOKIE['user'] . "!<br>";
+} else {
+    echo "No cookie named 'user' found.<br>";
+}
+
+// ----------------- DELETE COOKIE -----------------
+if (isset($_COOKIE['user'])) {
+    // Set cookie expiration to one hour ago
+    setcookie("user", "", time() - 3600, "/");
+    echo "Cookie 'user' has been deleted.";
+}
+?>
+
+
+OUTPUT:
+No cookie named 'user' found.
