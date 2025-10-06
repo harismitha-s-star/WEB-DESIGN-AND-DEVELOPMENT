@@ -1,0 +1,52 @@
+Develop a music playlist management system for a streaming service. The system should allow users to
+create, modify, and organize playlists. How would you use arrays and array functions to store and
+manipulate the song data and playlist information efficiently?
+
+CODE:
+<?php
+// Step 1: Master song library
+$songs = array(
+    1 => array("title" => "Shape of You", "artist" => "Ed Sheeran", "duration" => "3:53"),
+    2 => array("title" => "Blinding Lights", "artist" => "The Weeknd", "duration" => "4:02"),
+    3 => array("title" => "Levitating", "artist" => "Dua Lipa", "duration" => "3:24"),
+    4 => array("title" => "Believer", "artist" => "Imagine Dragons", "duration" => "3:37")
+);
+
+// Step 2: Create playlists (store song IDs)
+$playlists = array(
+    "Workout" => array(1, 4),
+    "Chill"   => array(2, 3)
+);
+
+// Function to display a playlist
+function showPlaylist($name, $playlist, $songs) {
+    echo "<b>Playlist: $name</b><br>";
+    foreach ($playlist as $songId) {
+        echo "- " . $songs[$songId]["title"] . " by " . $songs[$songId]["artist"] . "<br>";
+    }
+    echo "<br>";
+}
+
+// Step 3: Add a song to playlist
+array_push($playlists["Workout"], 2);
+
+// Step 4: Remove a song (e.g., remove "Levitating" from Chill)
+if(($key = array_search(3, $playlists["Chill"])) !== false) {
+    unset($playlists["Chill"][$key]);
+}
+
+// Step 5: Shuffle Workout playlist
+shuffle($playlists["Workout"]);
+
+// Step 6: Display Playlists
+showPlaylist("Workout", $playlists["Workout"], $songs);
+showPlaylist("Chill", $playlists["Chill"], $songs);
+?>
+
+OUTPUT:
+Playlist: Workout
+- Blinding Lights by The Weeknd
+- Shape of You by Ed Sheeran
+- Believer by Imagine Dragons
+Playlist: Chill
+- Blinding Lights by The Weeknd
