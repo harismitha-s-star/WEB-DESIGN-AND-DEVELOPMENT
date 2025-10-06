@@ -1,0 +1,23 @@
+Develop a PHP script that generates a random password consisting of a combination of
+letters, numbers, and special characters.
+
+CODE:
+<?php
+function generatePassword($length = 12) {
+    // Characters to use in the password
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+=-[]{}<>?';
+    
+    $password = '';
+    $maxIndex = strlen($characters) - 1;
+
+    // Loop to pick random characters
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, $maxIndex)];
+    }
+
+    return $password;
+}
+
+// Generate and display a password of length 12
+echo "Generated Password: " . generatePassword(12);
+?>
