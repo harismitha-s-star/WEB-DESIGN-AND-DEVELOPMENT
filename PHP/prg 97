@@ -1,0 +1,71 @@
+Discover the various session functions of PHP. Explain its behavior.
+
+SOLUTION:
+In PHP, sessions allow you to store user data (variables) across multiple page requests. 
+PHP provides a set of session functions to manage them. 
+
+Common PHP Session Functions & Their Behavior:
+1. session_start()
+Starts a new session or resumes an existing one.
+Must be called before any output is sent to the browser.
+SYNTAX:
+session_start();
+
+2. $_SESSION (Superglobal Array)
+Used to register/store variables in a session.
+SYNTAX:
+$_SESSION["user"] = "Rajesh"; 
+
+3. session_id()
+Returns the current session ID (a unique identifier for the session).
+You can also pass a string to set a custom session ID.
+SYNTAX:
+echo session_id();
+
+4. session_name()
+Returns the name of the current session (default: PHPSESSID).
+You can also set a custom session name before session_start().
+SYNTAX:
+echo session_name();
+
+5. session_unset()
+Frees all session variables but does not destroy the session itself.
+SYNTAX:
+session_unset();  // Clears all $_SESSION variables
+
+6. session_destroy()
+Destroys all data registered to a session.
+Ends the session but does not unset the $_SESSION array until the script ends.
+SYNTAX:
+session_destroy();
+
+7. session_regenerate_id()
+Generates a new session ID, replacing the old one.
+Commonly used for security (e.g., after login to prevent session fixation attacks).
+SYNTAX:
+session_regenerate_id(true);
+
+8. session_get_cookie_params()
+Returns an array with the current session cookie parameters (lifetime, path, domain, etc.).
+SYNATX:
+print_r(session_get_cookie_params());
+
+9. session_set_cookie_params()
+Sets the session cookie parameters (must be called before session_start()).
+SYNTAX:
+session_set_cookie_params(3600); // 1 hour
+
+10. session_write_close()
+Writes session data and ends the session.
+Useful if you want to finish session handling but keep data accessible.
+SYNTAX:
+session_write_close();
+
+SUMMARY:
+Start/Resume Session: session_start()
+Work with Variables: $_SESSION
+Session ID/Name: session_id(), session_name()
+Clear/Destroy: session_unset(), session_destroy()
+Security: session_regenerate_id()
+Cookies: session_get_cookie_params(), session_set_cookie_params()
+Close Session Writing: session_write_close()
