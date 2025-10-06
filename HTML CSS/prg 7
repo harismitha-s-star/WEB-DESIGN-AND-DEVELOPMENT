@@ -1,0 +1,93 @@
+Create a form which takes the name of the user as input and prints a greeting in the format
+given below and if the user submits the form with the name field blank, it prints an
+appropriate error message.
+Hello, Welcome to Everyone!
+Have a nice day!!
+
+ANSWER:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 90%;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .greeting {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Welcome!</h2>
+    <form id="greetingForm">
+        <input type="text" id="username" placeholder="Enter your name">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+    document.getElementById("greetingForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent form from refreshing
+        var name = document.getElementById("username").value.trim();
+        var message = document.getElementById("message");
+
+        if (name === "") {
+            message.innerHTML = "<p class='error'>Error: Please enter your name.</p>";
+        } else {
+            message.innerHTML = `<p class='greeting'>Hello ${name}, Welcome to Everyone!<br>Have a nice day!!</p>`;
+        }
+    });
+</script>
+
+</body>
+</html>
