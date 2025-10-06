@@ -1,0 +1,43 @@
+List the steps to get file name from a path in PHP.
+
+SOLUTION:
+STEPS:
+1. Have the file path
+Example:
+$path = "C:/xampp/htdocs/project/files/example.txt";
+
+2. Use PHP’s built-in function basename()
+basename($path) → Returns the file name with extension.
+echo basename($path);  // Output: example.txt
+
+3. Get file name without extension (optional)
+basename($path, ".txt") → Removes extension.
+echo basename($path, ".txt");  // Output: example
+
+4. Alternative: Use pathinfo()
+Provides detailed info (dirname, basename, extension, filename).
+$info = pathinfo($path);
+echo $info['basename']; // example.txt
+echo $info['filename']; // example
+echo $info['extension']; // txt
+
+CODE:
+<?php
+$path = "C:/xampp/htdocs/project/files/example.txt";
+
+// Method 1: Using basename()
+echo "File Name (with extension): " . basename($path) . "<br>";
+echo "File Name (without extension): " . basename($path, ".txt") . "<br>";
+
+// Method 2: Using pathinfo()
+$info = pathinfo($path);
+echo "File Name (basename): " . $info['basename'] . "<br>";
+echo "File Name only: " . $info['filename'] . "<br>";
+echo "Extension: " . $info['extension'] . "<br>";
+?>
+
+OUTPUT:
+File Name (with extension): example.txt
+File Name (without extension): example
+File Name (basename): example.txt
+File Name only: example<br>Extension: txt
