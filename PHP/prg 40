@@ -1,0 +1,26 @@
+Write a PHP script to remove all characters from a string except a-z A-Z 0-9 or " " using an array.
+
+CODE:
+<?php
+// Original string with special characters
+$text = "Hello@# World! 123 $$ PHP_8.0 is great!!";
+
+// Step 1: Split string into array of characters
+$chars = str_split($text);
+
+// Step 2: Filter only allowed characters [a-zA-Z0-9 ]
+$filtered = array_filter($chars, function($ch) {
+    return preg_match("/[a-zA-Z0-9 ]/", $ch);
+});
+
+// Step 3: Join array back into string
+$result = implode("", $filtered);
+
+// Display result
+echo "Original: $text <br>";
+echo "Filtered: $result";
+?>
+
+OUTPUT:
+Original: Hello@# World! 123 $$ PHP_8.0 is great!! 
+Filtered: Hello World 123  PHP80 is great
