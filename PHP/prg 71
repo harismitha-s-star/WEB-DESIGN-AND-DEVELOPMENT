@@ -1,0 +1,14 @@
+Tell the different file handling modes available in PHP?
+
+File Handling Modes in PHP:
+Mode	     Description
+r        	 Open for read-only. File pointer starts at the beginning of the file. (File must exist)
+r+	       Open for read and write. File pointer starts at the beginning. (File must exist)
+w	         Open for write-only. Erases contents if file exists, creates a new file if it doesn’t.
+w+	       Open for read and write. Erases contents if file exists, creates a new file if it doesn’t.
+a	         Open for write-only. File pointer at the end of the file. Creates file if it doesn’t exist. (Appends data)
+a+	       Open for read and write. File pointer at the end. Creates file if it doesn’t exist.
+x	         Create and open for write-only. Fails if file already exists.
+x+	       Create and open for read and write. Fails if file already exists.
+c	         Open file for write-only. Creates file if it doesn’t exist. Doesn’t erase contents (unlike w).
+c+	       Open file for read and write. Creates file if it doesn’t exist. Doesn’t erase contents.
