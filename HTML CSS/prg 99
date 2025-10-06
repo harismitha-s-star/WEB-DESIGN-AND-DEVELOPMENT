@@ -1,0 +1,85 @@
+Build a PHP program to apply the following tasks using session.
+(a) Initiate a session (or pick up an existing one).
+(b) Check for the existence of a pre-existing entry in $_SESSION. If not present, assume
+that the session is new.
+(c) Increment a counter that tracks how many times that the user has visited this page.
+(d) Store the incremented counter back in $_SESSION.
+(e) Provide a link back to the page itself, embedding the session ID as an argument if it is
+found.
+(f) Using PHP, construct a program to restrict the user from uploading the same file again
+and again. If the same file already exists in that folder, display an appropriate error
+message.
+
+SOLUTION:
+
+Task 1: Session Counter Program
+This program will:
+Start a session.
+Check if a counter exists in $_SESSION.
+If not, assume it’s a new session and start from 0.
+Increment the counter each time the page is loaded.
+Store the counter back into $_SESSION.
+Provide a link back to the same page with the session ID embedded.
+
+Task 2: Prevent Duplicate File Uploads
+This program will restrict users from uploading the same file again.
+If a file with the same name already exists in the target folder, it will reject the upload.
+
+CODE:
+<?php
+// (a) Initiate session
+session_start();
+
+// (b) Check for an existing session variable
+if (!isset($_SESSION['counter'])) {
+    $_SESSION['counter'] = 0;  // New session
+}
+
+// (c) Increment counter
+$_SESSION['counter']++;
+
+// (d) Store counter back in session
+$count = $_SESSION['counter'];
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Counter</title>
+</head>
+<body>
+    <h2>You have visited this page <?php echo $count; ?> times.</h2>
+
+    <!-- (e) Link back to the same page with session ID -->
+    <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) . '?' . SID; ?>">Reload Page</a>
+</body>
+</html>
+
+<?php
+// (f) Restrict duplicate file uploads
+session_start();
+
+$target_dir = "uploads/";  // Make sure this folder exists
+if (!is_dir($target_dir)) {
+    mkdir($target_dir, 0777, true); // Create folder if not exists
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+
+    // Check if file already exists
+    if (file_exists($target_file)) {
+        echo "<p style='color:red;'>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload Restriction</title>
+</head>
+<body>
+    <h2>Upload a File</h2>
+    <form method="post" enctype="multipart/form-data">
+        Select file to upload:
+        <input type="file" name="fileToUpload" required>
+        <input type="submit" value="Upload File">
+    </form>
+</body>
+</html>
