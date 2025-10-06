@@ -1,0 +1,80 @@
+A school wants to automate the calculation of student grades. Design a system that allows teachers to input
+student scores, calculates their grades, and generates a summary report. How would you utilize arrays and
+array functions to store and process the student data effectively?
+
+System Design Steps
+
+Input Data:
+Store students and their scores in a multidimensional array.
+Example:
+$students = array(
+    "Alice" => array(85, 90, 78),
+    "Bob"   => array(60, 70, 65),
+    "Carol" => array(92, 88, 95)
+);
+
+Process Scores:
+Use array functions to calculate totals and averages.
+array_sum() → sum of scores.
+count() → number of subjects.
+
+Assign Grades:
+Use conditional logic:
+90–100 → A
+80–89 → B
+70–79 → C
+60–69 → D
+<60 → F
+
+Generate Report:
+Loop through the array.
+Store results in another array for summary.
+
+CODE:
+<?php
+// Step 1: Store student data (scores in subjects)
+$students = array(
+    "Alice" => array(85, 90, 78),
+    "Bob"   => array(60, 70, 65),
+    "Carol" => array(92, 88, 95)
+);
+// Step 2: Process each student
+$report = array();
+foreach ($students as $name => $scores) {
+    $total = array_sum($scores);          // total marks
+    $average = $total / count($scores);   // average marks
+    // Step 3: Assign grade
+    if ($average >= 90) {
+        $grade = "A";
+    } elseif ($average >= 80) {
+        $grade = "B";
+    } elseif ($average >= 70) {
+        $grade = "C";
+    } elseif ($average >= 60) {
+        $grade = "D";
+    } else {
+        $grade = "F";
+    }
+   // Store in summary report
+    $report[$name] = array(
+        "Total" => $total,
+        "Average" => $average,
+        "Grade" => $grade
+    );
+}
+// Step 4: Display summary
+foreach ($report as $student => $data) {
+    echo "Student: $student <br>";
+    echo "Total: {$data['Total']} | Average: {$data['Average']} | Grade: {$data['Grade']} <br><br>";
+}
+?>
+
+OUTPUT:
+Student: Alice 
+Total: 253 | Average: 84.333333333333 | Grade: B 
+
+Student: Bob 
+Total: 195 | Average: 65 | Grade: D 
+
+Student: Carol 
+Total: 275 | Average: 91.666666666667 | Grade: A 
