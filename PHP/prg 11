@@ -1,0 +1,38 @@
+Develop a PHP program to show days of the week using switch cases.
+
+CODE:
+<?php
+// Get current day number (0 = Sunday, 6 = Saturday)
+$day_number = date("w");
+
+echo "Today is: ";
+
+switch ($day_number) {
+    case 0:
+        echo "Sunday";
+        break;
+    case 1:
+        echo "Monday";
+        break;
+    case 2:
+        echo "Tuesday";
+        break;
+    case 3:
+        echo "Wednesday";
+        break;
+    case 4:
+        echo "Thursday";
+        break;
+    case 5:
+        echo "Friday";
+        break;
+    case 6:
+        echo "Saturday";
+        break;
+    default:
+        echo "Invalid day";
+}
+?>
+
+OUTPUT:
+Today is: Thursday
