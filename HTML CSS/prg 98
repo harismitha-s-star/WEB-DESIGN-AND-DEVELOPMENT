@@ -1,0 +1,75 @@
+Model an Admin Login, Logout form using session variables in PHP.
+
+SOLUTION:
+We’ll use 3 files:
+login.php → Login form
+dashboard.php → Admin page (only accessible if logged in)
+logout.php → Logout and destroy session
+
+CODE:
+<?php
+session_start();
+
+// Check if admin session is set
+if (!isset($_SESSION["admin"])) {
+    header("Location: login.php"); // Redirect if not logged in
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h2>Welcome, <?php echo $_SESSION["admin"]; ?>!</h2>
+    <p>This is the protected Admin Dashboard.</p>
+    <a href="logout.php">Logout</a>
+</body>
+</html>
+
+<?php
+session_start();
+
+// If form submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Simple admin check (you can connect to DB instead)
+    if ($username === "admin" && $password === "12345") {
+        $_SESSION["admin"] = $username; // Register session variable
+        header("Location: dashboard.php"); // Redirect to dashboard
+        exit();
+    } else {
+        $error = "Invalid Username or Password!";
+    }
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    <?php if (!empty($error)) echo "<p style='color:red;'>
+    <form method="post" action="">
+        <label>Username:</label>
+        <input type="text" name="username" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+<?php
+session_start();
+session_unset();     // Remove all session variables
+session_destroy();   // Destroy the session
+header("Location: login.php"); // Redirect to login page
+exit();
+?>
