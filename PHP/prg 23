@@ -1,0 +1,45 @@
+Prioritize the use of GET and POST arguments in PHP with a real time example.
+
+ANSWER:
+In PHP, GET and POST are two primary methods for sending data from a client (browser) to a server, but they are prioritized 
+differently depending on the use case.
+
+POST → Preferred for sensitive or large amounts of data (login forms, file uploads, payments).
+GET → Preferred for retrieving or bookmarking data without sensitive information (search queries, filters).
+
+POST METHOD CODE:
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name']; // safer for sensitive data
+    $message = $_POST['message'];
+
+    echo "Hello, $name! Your message has been received: $message";
+}
+?>
+
+<form method="POST">
+    Name: <input type="text" name="name"><br>
+    Message: <textarea name="message"></textarea><br>
+    <input type="submit" value="Send">
+</form>
+
+ADVANTAGES OF POST:
+Data is not visible in the URL.
+Can handle large input.
+More secure for private data.
+
+GET METHOD CODE:
+<?php
+if (isset($_GET['search'])) {
+    $term = $_GET['search'];
+    echo "Searching for: $term";
+}
+?>
+<form method="GET">
+    Search: <input type="text" name="search">
+    <input type="submit" value="Go">
+</form>
+
+ADVANTAGES OF GET:
+The search query appears in the URL (e.g., ?search=PHP), so users can bookmark or share it.
+No sensitive information is sent.
