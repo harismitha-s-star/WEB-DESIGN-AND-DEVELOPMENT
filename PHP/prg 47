@@ -1,0 +1,20 @@
+Delete an element from the below array. And print the array elements in PHP. $x = array (1, 2, 3, 4, 5);
+
+CODE:
+<?php
+// Original array
+$x = array(1, 2, 3, 4, 5);
+
+// Delete element (e.g., remove 3)
+unset($x[2]);  // index 2 = value 3
+
+// Print array elements
+echo "Array elements after deletion:<br>";
+foreach ($x as $value) {
+    echo $value . " ";
+}
+?>
+
+OUTPUT:
+Array elements after deletion:
+1 2 4 5 
